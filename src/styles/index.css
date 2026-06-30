@@ -1420,17 +1420,37 @@ a {
   max-width: 12ch;
 }
 
+.rail-heading h2 {
+  max-width: 10ch;
+}
+
+.rail-heading h2 .rail-heading-line {
+  display: block;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .about-rail-layout .profile-manifest {
   min-height: auto;
   align-content: start;
   gap: 0.95rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(119, 228, 255, 0.24);
   border-radius: 1.2rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+    linear-gradient(180deg, rgba(119, 228, 255, 0.12), rgba(255, 255, 255, 0.03) 38%, rgba(242, 195, 107, 0.045)),
     rgba(7, 8, 13, 0.72);
   padding: 1.1rem;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 0 40px rgba(119, 228, 255, 0.08);
+}
+
+.about-rail-layout .profile-manifest::before {
+  opacity: 0.92;
 }
 
 .manifest-window-head,
@@ -1508,13 +1528,16 @@ a {
 }
 
 .trajectory-rail {
+  display: grid;
+  align-content: start;
+  gap: 0.8rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 1.2rem;
   background:
     linear-gradient(90deg, rgba(119, 228, 255, 0.08), transparent 22%),
     rgba(7, 8, 13, 0.66);
-  padding: 2.8rem 1rem 1rem;
+  padding: 2.65rem 1rem 1rem;
 }
 
 .trajectory-rail .timeline-axis-label {
@@ -1533,10 +1556,17 @@ a {
 }
 
 .trajectory-rail .trajectory-step {
+  display: grid;
+  grid-template-columns: 3.6rem minmax(0, 1fr);
+  gap: 1rem;
+  min-height: 7.1rem;
+  align-items: start;
   border: 1px solid rgba(255, 255, 255, 0.075);
   border-radius: 0.9rem;
-  background: rgba(255, 255, 255, 0.035);
-  padding: 1rem 1rem 1rem 1.4rem;
+  background:
+    linear-gradient(90deg, rgba(119, 228, 255, 0.075), transparent 42%),
+    rgba(255, 255, 255, 0.035);
+  padding: 1rem 1.1rem;
 }
 
 .trajectory-rail .trajectory-step > span {
@@ -1559,6 +1589,72 @@ a {
   margin-top: 0.35rem;
   color: var(--muted);
   line-height: 1.55;
+}
+
+.trajectory-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.trajectory-tags span {
+  border: 1px solid rgba(119, 228, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(119, 228, 255, 0.08);
+  padding: 0.25rem 0.55rem;
+  color: var(--text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.principle-ticker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.principle-ticker article {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.25rem 0.75rem;
+  align-items: baseline;
+  min-width: 0;
+  background:
+    linear-gradient(135deg, rgba(119, 228, 255, 0.075), transparent 55%),
+    rgba(7, 8, 13, 0.82);
+  padding: 0.9rem 1rem;
+}
+
+.principle-ticker article > span {
+  flex: none;
+  min-width: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--amber);
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: none;
+}
+
+.principle-ticker strong {
+  color: var(--text);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.principle-ticker p {
+  grid-column: 2;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
 }
 
 .skill-constellation-layout {
@@ -1817,7 +1913,7 @@ a {
   }
 
   .principle-ticker {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .skill-constellation {

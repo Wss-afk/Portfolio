@@ -7,20 +7,36 @@ const trajectory = [
     marker: "01",
     title: "Base técnica",
     detail: "DAW, Java, SQL y fundamentos de aplicaciones web.",
+    tags: ["Java", "SQL", "DAW"],
   },
   {
     marker: "02",
     title: "Backend aplicado",
     detail: "Spring Boot, APIs REST, autenticación y persistencia de datos.",
+    tags: ["Spring", "REST", "Datos"],
   },
   {
     marker: "03",
     title: "Frontend práctico",
     detail: "Angular, Vue y maquetación responsive con foco en claridad.",
+    tags: ["Angular", "Vue", "UI"],
   },
 ];
 
-const principles = ["Código mantenible", "Interfaz clara", "Aprendizaje continuo"];
+const principles = [
+  {
+    label: "Código mantenible",
+    detail: "Estructura simple",
+  },
+  {
+    label: "Interfaz clara",
+    detail: "Lectura rápida",
+  },
+  {
+    label: "Aprendizaje continuo",
+    detail: "Mejora constante",
+  },
+];
 
 export function About() {
   return (
@@ -36,7 +52,10 @@ export function About() {
       >
         <motion.div className="rail-heading" variants={sectionReveal}>
           <span>Espacio de trabajo</span>
-          <h2>Perfil práctico. Dirección clara.</h2>
+          <h2>
+            Perfil práctico.
+            <span className="rail-heading-line">Dirección clara.</span>
+          </h2>
         </motion.div>
 
         <motion.aside className="profile-manifest" variants={sectionReveal}>
@@ -83,6 +102,14 @@ export function About() {
               <div>
                 <h3>{item.title}</h3>
                 <p>{item.detail}</p>
+                <div
+                  className="trajectory-tags"
+                  aria-label={`Tecnologías de ${item.title}`}
+                >
+                  {item.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
               </div>
             </motion.article>
           ))}
@@ -90,9 +117,11 @@ export function About() {
 
         <motion.div className="principle-ticker" variants={sectionReveal}>
           {principles.map((principle, index) => (
-            <span key={principle}>
-              0{index + 1} / {principle}
-            </span>
+            <article key={principle.label}>
+              <span>0{index + 1}</span>
+              <strong>{principle.label}</strong>
+              <p>{principle.detail}</p>
+            </article>
           ))}
         </motion.div>
       </motion.div>
