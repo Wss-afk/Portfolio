@@ -1,0 +1,217 @@
+<style>
+  .hero-options {
+    display: grid;
+    gap: 22px;
+  }
+
+  .hero-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .hero-visual-card {
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 22px;
+    background: rgba(10,13,20,.82);
+    box-shadow: 0 24px 80px rgba(0,0,0,.34);
+  }
+
+  .hero-frame {
+    position: relative;
+    min-height: 250px;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.14), transparent 18%),
+      linear-gradient(135deg, #9dd8ff, #f6c879 44%, #222738);
+  }
+
+  .hero-frame.night {
+    background:
+      linear-gradient(180deg, rgba(125,185,255,.16), transparent 20%),
+      linear-gradient(135deg, #101426, #1e2547 44%, #080a12);
+  }
+
+  .hero-frame.hybrid {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.12), transparent 18%),
+      linear-gradient(135deg, #bfe7ff, #f0b86e 38%, #12182c 72%, #070911);
+  }
+
+  .window {
+    position: absolute;
+    inset: 24px 22px 90px;
+    border: 1px solid rgba(255,255,255,.4);
+    background:
+      linear-gradient(90deg, transparent 32%, rgba(255,255,255,.35) 33%, transparent 34%, transparent 66%, rgba(255,255,255,.32) 67%, transparent 68%),
+      linear-gradient(180deg, transparent 48%, rgba(255,255,255,.34) 49%, transparent 50%),
+      radial-gradient(circle at 72% 40%, rgba(255,255,255,.75), transparent 10%),
+      linear-gradient(180deg, rgba(102,190,255,.68), rgba(58,105,150,.72));
+  }
+
+  .night .window {
+    background:
+      linear-gradient(90deg, transparent 32%, rgba(255,255,255,.2) 33%, transparent 34%, transparent 66%, rgba(255,255,255,.18) 67%, transparent 68%),
+      linear-gradient(180deg, transparent 48%, rgba(255,255,255,.16) 49%, transparent 50%),
+      radial-gradient(circle at 74% 42%, rgba(255,222,116,.78), transparent 8%),
+      repeating-linear-gradient(90deg, rgba(255,209,100,.55) 0 3px, transparent 3px 18px),
+      linear-gradient(180deg, #17234c, #060914);
+  }
+
+  .hybrid .window::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 74% 42%, rgba(255,224,130,.7), transparent 12%),
+      repeating-linear-gradient(90deg, rgba(255,209,100,.35) 0 2px, transparent 2px 16px),
+      linear-gradient(120deg, transparent 0 42%, rgba(4,7,16,.76) 62% 100%);
+  }
+
+  .desk {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 86px;
+    background: linear-gradient(90deg, #4d3428, #8b6348, #3c2c27);
+  }
+
+  .laptop {
+    position: absolute;
+    left: 28px;
+    bottom: 36px;
+    width: 96px;
+    height: 58px;
+    border-radius: 8px 8px 2px 2px;
+    background: #11141c;
+    border: 2px solid rgba(255,255,255,.28);
+    box-shadow: 0 10px 28px rgba(0,0,0,.4);
+  }
+
+  .book {
+    position: absolute;
+    right: 30px;
+    bottom: 48px;
+    width: 86px;
+    height: 12px;
+    border-radius: 4px;
+    background: rgba(255,255,255,.7);
+    box-shadow: 0 15px 0 rgba(230,210,176,.78), 0 30px 0 rgba(255,255,255,.46);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(5,7,12,.74), rgba(5,7,12,.1) 58%, rgba(5,7,12,.62));
+  }
+
+  .mock-title {
+    position: absolute;
+    left: 22px;
+    bottom: 112px;
+    max-width: 210px;
+    color: white;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.02;
+  }
+
+  .focus-pill {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 999px;
+    padding: 8px 12px;
+    color: rgba(255,255,255,.86);
+    font-size: 12px;
+    background: rgba(8,10,18,.54);
+    backdrop-filter: blur(10px);
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .card-body h3 {
+    margin: 0 0 8px;
+  }
+
+  .card-body p {
+    margin: 0;
+    color: rgba(255,255,255,.7);
+  }
+
+  @media (max-width: 980px) {
+    .hero-card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="hero-options">
+  <div>
+    <h2>Hero 背景日夜切换方向</h2>
+    <p class="subtitle">目标：白天/黄昏是专业、清爽的开发房间；打开 Modo enfoque 后变成夜景、灯火、lofi，但仍适合求职 portfolio。</p>
+  </div>
+
+  <div class="hero-card-grid">
+    <div class="hero-visual-card card" data-choice="a" onclick="toggleSelect(this)">
+      <div class="hero-frame hybrid">
+        <div class="window"></div>
+        <div class="desk"></div>
+        <div class="laptop"></div>
+        <div class="book"></div>
+        <div class="hero-overlay"></div>
+        <div class="focus-pill">CSS day → night</div>
+        <div class="mock-title">Shanshui Wang<br>Full Stack Junior</div>
+      </div>
+      <div class="card-body">
+        <h3>A. 单图 + 日夜滤镜切换</h3>
+        <p>最快、性能最好。用一张房间图，Focus Mode 时加夜色、窗外灯光、暖色辉光。</p>
+      </div>
+    </div>
+
+    <div class="hero-visual-card card" data-choice="b" onclick="toggleSelect(this)">
+      <div class="hero-frame">
+        <div class="window"></div>
+        <div class="desk"></div>
+        <div class="laptop"></div>
+        <div class="book"></div>
+        <div class="hero-overlay"></div>
+        <div class="focus-pill">crossfade</div>
+        <div class="mock-title">Creador de interfaces limpias</div>
+      </div>
+      <div class="hero-frame night" style="min-height:120px;border-top:1px solid rgba(255,255,255,.12)">
+        <div class="window"></div>
+        <div class="desk"></div>
+        <div class="laptop"></div>
+        <div class="book"></div>
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="card-body">
+        <h3>B. 双图交叉淡入淡出</h3>
+        <p>效果最稳：一张白天/黄昏，一张夜晚，同构图切换。视觉最接近你描述的“同一个房间变夜”。</p>
+      </div>
+    </div>
+
+    <div class="hero-visual-card card" data-choice="c" onclick="toggleSelect(this)">
+      <div class="hero-frame night">
+        <div class="window"></div>
+        <div class="desk"></div>
+        <div class="laptop"></div>
+        <div class="book"></div>
+        <div class="hero-overlay"></div>
+        <div class="focus-pill">loop video</div>
+        <div class="mock-title">Building quietly.<br>Learning constantly.</div>
+      </div>
+      <div class="card-body">
+        <h3>C. 短循环视频 / 伪视频</h3>
+        <p>沉浸感最强，可做云、窗外灯光、屏幕微光。但文件体积和性能风险最高。</p>
+      </div>
+    </div>
+  </div>
+</div>
